@@ -27,9 +27,9 @@ const sendEmailAsync = async (email)=>{
         console.log(error)
     }
 }
-// sendEmailAsync("muyizereberissa@gmail.com");
-// sendEmailAsync("muyizereberissa22@gmail.com");
-// sendEmailAsync("zigama@gmail.com");
+sendEmailAsync("muyizereberissa@gmail.com");
+sendEmailAsync("muyizereberissa22@gmail.com");
+sendEmailAsync("zigama@gmail.com");
 
 
 // You want to simulate a login system that tries to log in a user. The first two attempts fail, but the third succeeds.
@@ -69,4 +69,50 @@ async function tryLogin() {
 // logs "Loading content...", waits 2 seconds; logs "Loading footer...", waits 1 second; and finally logs "Page fully loaded".
 //  Use setTimeout inside Promises and await them in sequence.
 
+const delayLog = (message, delay) => {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            console.log(message);
+            resolve();
+        }, delay);
+    });
+};
+const loadPage = async () => {
+    try {
+        await delayLog("Loading header...", 1000);
+        await delayLog("Loading content...", 2000);
+        await delayLog("Loading footer...", 1000);
+        console.log("Page fully loaded");
+    } catch (error) {
+        console.error("Error loading page:", error);
+    }
+};
+loadPage();
 
+// You are simulating fetching stock prices with delays. Write a function fetchPrice(symbol) that returns a Promise 
+// which resolves after 2 seconds with the message "Price for [symbol] retrieved". Use async/await to call it for two 
+// different stocks ("AAPL" and "GOOG") and log the messages in order.
+
+
+const fetchPrice = (symbol) => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (symbol === "INVALID") {
+        reject(`Failed to fetch price for ${symbol}`);
+      } else {
+        resolve(`Price for ${symbol} retrieved`);
+      }
+    }, 2000);
+  });
+};
+const getPrices = async () => {
+  try {
+    const priceAAPL = await fetchPrice("AAPL");
+    console.log(priceAAPL);
+    const priceGOOG = await fetchPrice("GOOG");
+    console.log(priceGOOG);
+  } catch (error) {
+    console.error("Error:", error);
+  }
+};
+getPrices();
