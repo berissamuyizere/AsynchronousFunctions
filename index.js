@@ -94,8 +94,7 @@ tryLogin();
 // Pseudocode
 // 1. Create a variable called count and set it to 5
 // 2.Use setInterval to run a block of code every 1 second.
-// 3. Inside the interval:
-// 4. Print the current value of count decrementing by 1 , if the count ie equal to 0 stop the the interval
+// 3. Inside the interval, print the current value of count decrementing by 1 , if the count ie equal to 0 stop the the interval
 // then print "Time's up!" .
 
 
